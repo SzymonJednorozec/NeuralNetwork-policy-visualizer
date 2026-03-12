@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import onnxruntime as ort
 import sys
 
+SIZE = 50
 
 if __name__=="__main__":
     try:
@@ -55,3 +56,16 @@ if __name__=="__main__":
                 state_values[feature] = min_v
             else:
                 state_values[feature] = st.slider(f"Feature {feature}",float(min_v),float(max_v),value=0.0,key=key_sld)
+        
+        if st.button("Show graph"):
+            x_range = np.linspace(0,1,SIZE)
+            y_range = np.linspace(0,1,SIZE)
+            xx, yy = np.meshgrid(x_range, y_range)
+            flat_x, flat_y = xx.ravel(), yy.ravel()
+
+            for i in range(number_of_features):
+                if i!=x_axis and i !=y_axis:
+                    
+
+            
+            
