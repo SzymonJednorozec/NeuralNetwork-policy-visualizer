@@ -5,7 +5,7 @@ import matplotlib.colors as mcolors
 import onnxruntime as ort
 import sys
 
-SIZE = 50
+SIZE = 70
 
 if __name__=="__main__":
     try:
@@ -108,15 +108,27 @@ if __name__=="__main__":
         z_val = prediction.flatten()
     z_grid = z_val.reshape(SIZE,SIZE)
 
+
     fig, ax = plt.subplots()
-    if num_outputs>1:
+    
+    flip_y = st.sidebar.checkbox("Invert Y axis", value=False)
+
+    if num_outputs > 1:
         cmap = plt.get_cmap('tab10', num_outputs)
-        im = ax.imshow(z_grid, extent=[min_x, max_x, min_y, max_y], origin='lower', cmap=cmap, interpolation='nearest')
+        im = ax.imshow(z_grid, extent=[min_x, max_x, min_y, max_y], 
+                       origin='lower', cmap=cmap, interpolation='nearest', aspect='auto')
+        
         cbar = fig.colorbar(im, ticks=range(num_outputs))
         cbar.ax.set_yticklabels(output_names)
     else:
         c = ax.contourf(xx, yy, z_grid, cmap='RdYlBu')
         fig.colorbar(c)
+
+    ax.set_xlabel(x_name)
+    ax.set_ylabel(y_name)
+
+    if flip_y:
+        ax.invert_yaxis()
 
     st.pyplot(fig)
 
