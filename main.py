@@ -17,16 +17,7 @@ if __name__=="__main__":
     input_info = session.get_inputs()[0]
     number_of_features = input_info.shape[-1] #TODO - do it better, more error proof. Only 1d supported
     input_name = input_info.name
-    # print(number_of_features)
-    # for i in input_info:
-    #     print(f"Nazwa wejścia: {i.name}")
-    #     print(f"Kształt (shape): {i.shape}")
-    #     print(f"Typ danych: {i.type}")
 
-    # outputs = session.get_outputs()
-    # for o in outputs:
-    #     print(f"Nazwa wyjścia: {o.name}")
-    #     print(f"Kształt wyjścia: {o.shape}")
     with st.sidebar.expander("Name features"):
         feature_names = []
         for i in range(number_of_features):
