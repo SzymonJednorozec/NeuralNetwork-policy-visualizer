@@ -1,5 +1,7 @@
 # NeuralNetwork-policy-visualizer
 
+![](/images/g1.gif)
+
 An interactive Explainable AI dashboard built with Streamlit to visualize and interpret neural network decision boundaries.
  
 ---
@@ -49,11 +51,10 @@ This simple tool is designed to provide a high-resolution heatmaps that map the 
  
 ```bash
 pip install -r requirements.txt
-```
-### 2. Make sure that .onnx and .onnx.data model files are in the same directory with main.py
- 
-### 3. Run the app
+``` 
+### 2. Run the app
  
 ```bash
-streamlit run app.py
+streamlit run main.py
 ```
+### 3. Drag and drop your onnx model files into the upload area
